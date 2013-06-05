@@ -13,7 +13,6 @@ from mezzanine.generic.fields import RatingField, CommentsField
 
 class Link(Displayable, Ownable):
 
-    link = models.URLField()
     rating = RatingField()
     comments = CommentsField()
 
@@ -21,15 +20,11 @@ class Link(Displayable, Ownable):
     def get_absolute_url(self):
         return ("link_detail", (), {"slug": self.slug})
 
-    def domain(self):
-        return urlparse(self.link).netloc
 
 
 class Profile(models.Model):
 
     user = models.OneToOneField("auth.User")
-    website = models.URLField(blank=True)
-    bio = models.TextField(blank=True)
     karma = models.IntegerField(default=0, editable=False)
 
     def __unicode__(self):
@@ -50,6 +45,7 @@ def karma(sender, **kwargs):
     if not kwargs["created"]:
         value *= 2
     content_object = rating.content_object
+
     if rating.user != content_object.user:
         queryset = Profile.objects.filter(user=content_object.user)
         queryset.update(karma=models.F("karma") + value)

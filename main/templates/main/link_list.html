@@ -2,7 +2,7 @@
 
 {% load mezzanine_tags rating_tags future %}
 
-{% block meta_title %}{{ title|default:"Home" }}{% endblock %}
+{% block meta_title %}{{ title|default:"Anasayfa" }}{% endblock %}
 {% block title %}{{ title }}{% endblock %}
 
 {% block main %}
@@ -12,12 +12,10 @@
     {% if not profile_user %}{% rating_for link %}{% endif %}
     <div class="link-detail{% if link.rating_sum < 0 %} link-negative{% endif %}">
         <h2>
-            <a href="{{ link.link }}">{{ link.title }}</a>
-            <span class="domain">({{ link.domain }})</span>
+            <p>{{ link.title }}</p>
         </h2>
-        by <a class="profile" href="{% url "profile" link.user.username %}">{{ link.user.profile }}</a>
-        {{ link.publish_date|timesince }} ago |
-        <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comment{{ link.comments_count|pluralize }} </a>
+        {{ link.publish_date|timesince }} &#246;nce |
+        <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} yorum </a>
     </div>
 </div>
 {% empty %}
