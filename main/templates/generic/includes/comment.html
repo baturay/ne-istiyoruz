@@ -7,14 +7,14 @@
 
         <p class="comment-meta">
             <a href="{% url "profile" comment.user.username %}">{{ comment.user.profile }}</a>
-            {{ comment.submit_date|timesince }} ago
+            {{ comment.submit_date|timesince }}  &#246;nce
         </p>
         <p class="comment-comment">{{ comment.comment|comment_filter }}</p>
 
         <div class="comment-links">
             {% rating_for comment %}
             <a href="{{ request.path }}#comment-{{ comment.id }}">link</a> |
-            <a href="#reply-{{ comment.id }}" class="reply no-pjax">reply</a>
+            <a href="#reply-{{ comment.id }}" class="reply no-pjax">cevapla</a>
             <form class="reply-form" method="post" id="reply-{{ comment.id }}"
                 action="{{ comment_url }}#reply-{{ comment.id }}"
                 {% if replied_to != comment.id %}style="display:none;"{% endif %}>
@@ -32,7 +32,7 @@
     {% else %}
 
         {% if comment.is_removed %}
-        <p>Deleted</p>
+        <p>Silindi</p>
         {% endif %}
 
     {% endif %}
@@ -40,7 +40,7 @@
     </li>
     {% endfor %}
     {% if no_comments %}
-    <li>No comments yet</li>
+    <li>Bu istek icin yorum yapilmamis.</li>
     {% endif %}
 </ul>
 

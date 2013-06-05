@@ -10,6 +10,9 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
 ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 
+USE_I18N = True
+LANGUAGE_CODE = "tr_TR"
+
 INSTALLED_APPS = (
     "main",
     "django.contrib.admin",
@@ -34,12 +37,18 @@ MIDDLEWARE_CLASSES.remove("mezzanine.pages.middleware.PageMiddleware")
 
 # Mezzanine
 AUTH_PROFILE_MODULE = "main.Profile"
-SITE_TITLE = "Drum"
+SITE_TITLE = "Ne Istiyoruz?"
 RATINGS_RANGE = (-1, 1)
 RATINGS_ACCOUNT_REQUIRED = True
 COMMENTS_ACCOUNT_REQUIRED = True
 ACCOUNTS_PROFILE_VIEWS_ENABLED = True
-
+ACCOUNTS_PROFILE_FORM_EXCLUDE_FIELDS = (
+    "first_name",
+    "last_name",
+    "signup_date",
+    "bio",
+    "website"
+    )
 # Drum
 ALLOWED_DUPLICATE_LINK_HOURS = 24 * 7 * 3
 ITEMS_PER_PAGE = 20

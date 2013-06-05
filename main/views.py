@@ -94,7 +94,7 @@ class LinkList(LinkView, ScoreOrderingView):
         if context["profile_user"]:
             return "Links by %s" % context["profile_user"].profile
         else:
-            return "Newest"
+            return "Yeniler"
 
 
 class LinkCreate(CreateView):
@@ -104,7 +104,7 @@ class LinkCreate(CreateView):
     so that we can provide our own descriptions.
     """
 
-    form_class = modelform_factory(Link, fields=("title", "link",
+    form_class = modelform_factory(Link, fields=("title",
                                                  "description"))
     model = Link
 
@@ -124,7 +124,7 @@ class LinkCreate(CreateView):
                 return redirect(link)
         form.instance.user = self.request.user
         form.instance.gen_description = False
-        info(self.request, "Link created")
+        info(self.request, "Talep yaratildi.")
         return super(LinkCreate, self).form_valid(form)
 
 
@@ -134,8 +134,6 @@ class LinkDetail(LinkView, DetailView):
     in its template.
     """
     pass
-
-
 class CommentList(ScoreOrderingView):
     """
     List view for comments, which can be for all users ("comments" and
@@ -159,4 +157,3 @@ class CommentList(ScoreOrderingView):
             return "Best comments"
         else:
             return "Latest comments"
-
