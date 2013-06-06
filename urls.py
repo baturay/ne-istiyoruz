@@ -12,6 +12,7 @@ urlpatterns = patterns("",
     ("^admin/", include(admin.site.urls)),
     ("^", include("main.urls")),
     ("^", include("mezzanine.urls")),
+    url(r'', include('social_auth.urls')),
 )
 
 # Adds ``STATIC_URL`` to the context.
