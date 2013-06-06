@@ -31,6 +31,7 @@ INSTALLED_APPS = (
     "mezzanine.accounts",
 )
 
+
 MIDDLEWARE_CLASSES = (["mezzanine.core.middleware.UpdateCacheMiddleware"] +
                       list(MIDDLEWARE_CLASSES) +
                       ["mezzanine.core.middleware.FetchFromCacheMiddleware"])
@@ -66,7 +67,6 @@ except ImportError:
 else:
     set_dynamic_settings(globals())
 
-#DATABASES['default'] =  dj_database_url.config()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 DATABASES = {
     'default': {
@@ -79,3 +79,4 @@ DATABASES = {
      }
 }
 
+DATABASES['default'] =  dj_database_url.config()
