@@ -45,6 +45,9 @@ def set_dynamic_settings(s):
 
     if not s.get("ALLOWED_HOSTS", []):
         from warnings import warn
+        warn("You haven't defined the ALLOWED_HOSTS settings, which "
+                        "Django 1.5 requires. Will fall back to the domains "
+                                     "configured as sites.")
         s["ALLOWED_HOSTS"] = SitesAllowedHosts()
 
     # Define some settings based on management command being run.

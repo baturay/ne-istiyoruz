@@ -109,19 +109,6 @@ class LinkCreate(CreateView):
     model = Link
 
     def form_valid(self, form):
-        hours = getattr(settings, "ALLOWED_DUPLICATE_LINK_HOURS", None)
-        if hours:
-            lookup = {
-                "link": form.instance.link,
-                "publish_date__gt": now() - timedelta(hours=hours),
-            }
-            try:
-                link = Link.objects.get(**lookup)
-            except Link.DoesNotExist:
-                pass
-            else:
-                error(self.request, "Link exists")
-                return redirect(link)
         form.instance.user = self.request.user
         form.instance.gen_description = False
         info(self.request, "Talep yaratildi.")

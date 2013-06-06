@@ -5,7 +5,6 @@
 .navbar a.btn {padding:3px 10px !important; margin:7px 3px;}
 .navbar-search .btn {display:none;}
 a.brand {
-    background:url('../img/drum-logo.png') no-repeat; background-position:5px 6px;
     text-indent:13px; margin-left:-3px !important;
     font-family: 'Risque', cursive;
     font-size:28px !important;

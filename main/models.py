@@ -15,6 +15,8 @@ class Link(Displayable, Ownable):
 
     rating = RatingField()
     comments = CommentsField()
+    link = models.URLField()
+
 
     @models.permalink
     def get_absolute_url(self):
@@ -26,9 +28,11 @@ class Profile(models.Model):
 
     user = models.OneToOneField("auth.User")
     karma = models.IntegerField(default=0, editable=False)
+    website = models.URLField(blank=True)
+    bio = models.TextField(blank=True)
 
     def __unicode__(self):
-        return "%s (%s)" % (self.user, self.karma)
+        return "%s" % (self.user)
 
 
 @receiver(post_save, sender=Rating)
