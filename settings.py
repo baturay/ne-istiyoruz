@@ -1,6 +1,7 @@
 
 from mezzanine.project_template.settings import *
 import os
+import dj_database_url
 
 # Paths
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -47,7 +48,7 @@ ACCOUNTS_PROFILE_FORM_EXCLUDE_FIELDS = (
     "last_name",
     "signup_date",
     "bio",
-    "website"
+    "website",
     )
 # Drum
 ALLOWED_DUPLICATE_LINK_HOURS = 24 * 7 * 3
@@ -64,3 +65,17 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+#DATABASES['default'] =  dj_database_url.config()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'geziparki',                      # Or path to database file if using sqlite3.
+        'USER': 'geziparki',                      # Not used with sqlite3.
+        'PASSWORD': '3jk9r4',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+     }
+}
+
