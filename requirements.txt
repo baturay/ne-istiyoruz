@@ -6,3 +6,4 @@ gunicorn
 psycopg2
 python-memcached
 dj-database-url
+django-social-auth

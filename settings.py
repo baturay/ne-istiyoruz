@@ -1,4 +1,3 @@
-
 from mezzanine.project_template.settings import *
 import os
 import dj_database_url
@@ -29,12 +28,14 @@ INSTALLED_APPS = (
     "mezzanine.core",
     "mezzanine.generic",
     "mezzanine.accounts",
+    "social_auth",
 )
 
 
 MIDDLEWARE_CLASSES = (["mezzanine.core.middleware.UpdateCacheMiddleware"] +
                       list(MIDDLEWARE_CLASSES) +
-                      ["mezzanine.core.middleware.FetchFromCacheMiddleware"])
+                      ["mezzanine.core.middleware.FetchFromCacheMiddleware"] +
+                      ["social_auth.middleware.SocialAuthExceptionMiddleware"])
 MIDDLEWARE_CLASSES.remove("mezzanine.pages.middleware.PageMiddleware")
 
 # Mezzanine
@@ -80,3 +81,13 @@ DATABASES = {
 }
 
 DATABASES['default'] =  dj_database_url.config()
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    'social_auth.backends.twitter.TwitterBackend',
+)
+
+FACEBOOK_APP_ID='473967952680207'
+FACEBOOK_API_SECRET='94518338ad90a4c008ee21f694e7c55e'
+TWITTER_CONSUMER_KEY = 'r4pvyBcAyg1LwNylHHsCA'
+TWITTER_CONSUMER_SECRET = 'qH47LC4psiK5e5WQazXh1fHLqta4PnvHQEN7tMIYNg'
