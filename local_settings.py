@@ -2,5 +2,5 @@
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
-SECRET_KEY = ""
+SECRET_KEY = "kereviz"
 
