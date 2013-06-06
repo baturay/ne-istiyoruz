@@ -5,3 +5,4 @@ feedparser
 gunicorn
 psycopg2
 python-memcached
+dj-database-url
