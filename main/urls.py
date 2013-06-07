@@ -3,6 +3,7 @@ from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
 
 from .views import LinkList, LinkCreate, LinkDetail, CommentList
+from django.views.generic import RedirectView
 
 
 urlpatterns = patterns("",
@@ -30,5 +31,5 @@ urlpatterns = patterns("",
     url("^users/(?P<username>.*)/comments/$",
         CommentList.as_view(), {"by_score": False},
         name="comment_list_user"),
-    url("^accounts/profile", RedirectView.as_view(url='/account/update')),
+    url("^accounts/profile/$", RedirectView.as_view(url='/account/update')),
 )
