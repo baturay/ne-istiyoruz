@@ -1,6 +1,7 @@
 
 from collections import defaultdict
 from django import template
+from django.template.defaultfilters import stringfilter
 
 from ..utils import order_by_score
 from ..views import CommentList
@@ -21,3 +22,9 @@ def order_comments_by_score_for(context, link):
         comments[comment.replied_to_id].append(comment)
     context["all_comments"] = comments
     return ""
+
+@register.filter
+@stringfilter
+def upto(value, delimiter=None):
+    return value.split(delimiter)[0]
+upto.is_safe = True

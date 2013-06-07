@@ -111,3 +111,6 @@ h1, .link-item, .comment-item, .comment-links {border-bottom-width:5px;}
 
 /* Form actions */
 .form-actions {margin-top: 0px; padding-top: 0px; padding-bottom: 0px; margin-bottom: 0px;}
+
+#facebook a {background:blue; color:white; font-size:24px;}
+#twitter a {background:#8DEEEE; color:white; font-size:24px;}
