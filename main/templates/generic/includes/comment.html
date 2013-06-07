@@ -4,29 +4,31 @@
     {% for comment in comments_for_thread %}
     <li id="comment-{{ comment.id }}">
     {% if not comment.is_removed and comment.is_public %}
+        <p class="hidecomment">[-]&nbsp</p>
+          <p class="comment-meta">
+              <a href="{% url "profile" comment.user.username %}">{{ comment.user.profile }}</a>
+              {{ comment.submit_date|timesince|upto:',' }}  &#246;nce
+          </p>
+        <br/>
+        <div class="wholecomment">
+              {% rating_for comment %}
+          <p class="comment-comment">{{ comment.comment|comment_filter }}</p>
 
-        <p class="comment-meta">
-            <a href="{% url "profile" comment.user.username %}">{{ comment.user.profile }}</a>
-            {{ comment.submit_date|timesince|upto:',' }}  &#246;nce
-        </p>
-            {% rating_for comment %}
-        <p class="comment-comment">{{ comment.comment|comment_filter }}</p>
-
-        <div class="comment-links">
-            <a href="{{ request.path }}#comment-{{ comment.id }}">link</a> |
-            <a href="#reply-{{ comment.id }}" class="reply no-pjax">cevapla</a>
-            <form class="reply-form" method="post" id="reply-{{ comment.id }}"
-                action="{{ comment_url }}#reply-{{ comment.id }}"
-                {% if replied_to != comment.id %}style="display:none;"{% endif %}>
-                {% if replied_to == comment.id %}
-                {% fields_for posted_comment_form %}
-                {% else %}
-                {% fields_for unposted_comment_form %}
-                {% endif %}
-                <input type="hidden" name="replied_to" value="{{ comment.id }}">
-                <input class="btn btn-primary btn-large" type="submit" value="{% trans "Reply" %}">
-            </form>
-        </div>
+          <div class="comment-links">
+              <a href="{{ request.path }}#comment-{{ comment.id }}">link</a> |
+              <a href="#reply-{{ comment.id }}" class="reply no-pjax">cevapla</a>
+              <form class="reply-form" method="post" id="reply-{{ comment.id }}"
+                  action="{{ comment_url }}#reply-{{ comment.id }}"
+                  {% if replied_to != comment.id %}style="display:none;"{% endif %}>
+                  {% if replied_to == comment.id %}
+                  {% fields_for posted_comment_form %}
+                  {% else %}
+                  {% fields_for unposted_comment_form %}
+                  {% endif %}
+                  <input type="hidden" name="replied_to" value="{{ comment.id }}">
+                  <input class="btn btn-primary btn-large" type="submit" value="{% trans "Reply" %}">
+              </form>
+          </div>
 
 
     {% else %}
@@ -37,6 +39,7 @@
 
     {% endif %}
     {% comment_thread comment %}
+    </div>
     </li>
     {% endfor %}
     {% if no_comments %}

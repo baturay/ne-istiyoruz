@@ -109,6 +109,8 @@ h1, .link-item, .comment-item, .comment-links {border-bottom-width:5px;}
 .comment-item {color:#aaa;}
 .comment-item .comment {color:#666;}
 
+.hidecomment, .comment-meta  {float:left; display: inline; margin:0; font-size:12px;}
+
 /* Form actions */
 .form-actions {margin-top: 0px; padding-top: 0px; padding-bottom: 0px; margin-bottom: 0px;}
 

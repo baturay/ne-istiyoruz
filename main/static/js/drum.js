@@ -1,3 +1,29 @@
+var hideComments = function() {
+
+  $('.hidecomment').click(function() {
+    var hideButton = $(this);
+    var par = hideButton.nextAll(".wholecomment")
+  console.log(par)  
+  if(par[0].style.display == 'none')
+  {
+    par[0].style.display='block';
+    hideButton.html("[-]")
+  }
+  else
+  {
+    par[0].style.display = 'none';
+    hideButton.html("[+]")
+  }
+    
+  })
+}
+
+$(hideComments);
+
+
+
+
+
 
 var setRatingClick = function() {
     // Drum hides the radio buttons for +1 -1 ratings, and uses
