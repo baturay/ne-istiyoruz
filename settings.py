@@ -96,5 +96,5 @@ LOGIN_ERROR_URL    = '/login-error/'
 SESSION_SAVE_EVERY_REQUEST = True
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-    "myapp.processor.foos",
+"social_auth.context_processors.social_auth_by_type_backends",
     )
