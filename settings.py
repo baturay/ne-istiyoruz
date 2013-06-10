@@ -94,13 +94,3 @@ TWITTER_CONSUMER_SECRET = 'qH47LC4psiK5e5WQazXh1fHLqta4PnvHQEN7tMIYNg'
 LOGIN_ERROR_URL    = '/login-error/'
 SESSION_SAVE_EVERY_REQUEST = True
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-"django.contrib.auth.context_processors.auth",
-"django.core.context_processors.debug",
-"django.core.context_processors.i18n",
-"django.core.context_processors.media",
-"django.core.context_processors.static",
-"django.core.context_processors.tz",
-"django.contrib.messages.context_processors.messages",
-"social_auth.context_processors.social_auth_by_type_backends")
