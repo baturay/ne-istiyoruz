@@ -1,7 +1,6 @@
 from mezzanine.project_template.settings import *
 import os
 import dj_database_url
-from django.conf import global_settings
 
 # Paths
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
