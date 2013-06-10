@@ -31,5 +31,5 @@ urlpatterns = patterns("",
     url("^users/(?P<username>.*)/comments/$",
         CommentList.as_view(), {"by_score": False},
         name="comment_list_user"),
-#    url("^accounts/profile/$", RedirectView.as_view(url='/account/update')),
+    url("^accounts/profile/$", RedirectView.as_view(url='')),
 )
